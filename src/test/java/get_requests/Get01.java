@@ -32,9 +32,9 @@ public class Get01 {
 
 //        iv)   Do assertion
         response.
-                then().
+                then(). //then() otomatik olarak assertion yapiyor
                 statusCode(200).
                 contentType("application/json").
-                statusLine("HTTP/1.1 200 OK"); //then() otomatik olarak assertion yapiyor
+                statusLine("HTTP/1.1 200 OK");
     }
 }
