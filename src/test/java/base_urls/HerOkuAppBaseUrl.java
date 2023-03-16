@@ -5,7 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 
-public class JsonPlaceHolderBaseUrl {
+public class HerOkuAppBaseUrl {
 
     protected RequestSpecification spec;
 //    baska package den ulasmak ıstedgımız ıcın protected yaptık
@@ -14,8 +14,7 @@ public class JsonPlaceHolderBaseUrl {
     public void setUp(){
 
         spec = new RequestSpecBuilder().
-                setAccept(ContentType.JSON).
-                setBaseUri("https://jsonplaceholder.typicode.com").
+                setBaseUri("https://restful-booker.herokuapp.com").
                 build();
     }
 }

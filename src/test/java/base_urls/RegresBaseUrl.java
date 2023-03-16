@@ -1,11 +1,10 @@
 package base_urls;
 
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 
-public class HerOkuAppBaseUrl {
+public class RegresBaseUrl {
 
     protected RequestSpecification spec;
 //    baska package den ulasmak ıstedgımız ıcın protected yaptık
@@ -14,7 +13,7 @@ public class HerOkuAppBaseUrl {
     public void setUp(){
 
         spec = new RequestSpecBuilder().
-                setBaseUri("https://restful-booker.herokuapp.com").
+                setBaseUri("https://reqres.in/api/").
                 build();
     }
 }
