@@ -14,6 +14,7 @@ public class JsonPlaceHolderBaseUrl {
     public void setUp(){
 
         spec = new RequestSpecBuilder().
+                setContentType(ContentType.JSON).
                 setAccept(ContentType.JSON).
                 setBaseUri("https://jsonplaceholder.typicode.com").
                 build();
