@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import test_data.GoRestTestData;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -24,35 +25,36 @@ public class Get10 extends GoRestBaseUrl {
 {
     "meta": null,
     "data": {
-        "id": 128529,
-        "name": "Anamika Joshi",
-        "email": "anamika_joshi@corkery-ritchie.info",
-        "gender": "male",
-        "status": "active"
+        "id": 156660,
+        "name": "Ms. Ahalya Prajapat",
+        "email": "ahalya_prajapat_ms@hand-reilly.biz",
+        "gender": "female",
+        "status": "inactive"
     }
 }
  */
 
     @Test
     public void get10() {
-        spec.pathParams("first","users","second",128529);
+        spec.pathParams("first", "users", "second", 156660);
 
         GoRestTestData obj = new GoRestTestData();
-        Map<String,String> dataMap = obj.dataMapMethod("Anamika Joshi","anamika_joshi@corkery-ritchie.info","male","active");
+        Map<String, String> dataMap = obj.dataMapMethod("Ms. Ahalya Prajapat", "ahalya_prajapat_ms@hand-reilly.biz", "female", "inactive");
 
-        Map<String,Object> expectedData = obj.expectedDataMapMethod(null,dataMap);
+        Map<String, Object> expectedData = obj.expectedDataMapMethod(null, dataMap);
         System.out.println("expectedData = " + expectedData);
 
         //Send the request and get the response
         Response response = given().spec(spec).get("/{first}/{second}");
         response.prettyPrint();
 
-//        Do Assertion ODEV
-//        assertEquals(200, response.statusCode());
-//        assertEquals(expectedData.get("meta"), actualData.get("meta"));
-//        assertEquals(((Map) expectedData.get("data")).get("name"), ((Map) actualData.get("data")).get("name"));
-//        assertEquals(((Map) expectedData.get("data")).get("email"), ((Map) actualData.get("data")).get("email"));
-//        assertEquals(((Map) expectedData.get("data")).get("gender"), ((Map) actualData.get("data")).get("gender"));
-//        assertEquals(((Map) expectedData.get("data")).get("status"), ((Map) actualData.get("data")).get("status"));
- }
+        Map<String, Object> actualData = response.as(HashMap.class);
+
+        assertEquals(200, response.statusCode());
+        assertEquals(expectedData.get("name"), actualData.get("name"));
+        assertEquals(expectedData.get("email"), actualData.get("email"));
+        assertEquals(expectedData.get("gender"), actualData.get("gender"));
+        assertEquals(expectedData.get("status"), actualData.get("status"));
+        assertEquals(expectedData.get("meta"), actualData.get("meta"));
+    }
 }

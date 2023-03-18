@@ -19,7 +19,9 @@ public class HerOkuAppTestData {
         ecpectedData.put("totalprice", totalprice);
         ecpectedData.put("depositpaid", depositpaid);
         ecpectedData.put("bookingdates", bookingdatesMap);
-        ecpectedData.put("additionalneeds", additionalneeds);
+        if (additionalneeds!=null){
+            ecpectedData.put("additionalneeds", additionalneeds);
+        }
         return ecpectedData;
     }
 }
