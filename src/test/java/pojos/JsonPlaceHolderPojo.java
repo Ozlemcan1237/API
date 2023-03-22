@@ -1,7 +1,7 @@
 package pojos;
 
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true) //Karsidan gelen datayla uyusmamasi durumlarinda kullaniyoruz.Onu gormezden gel diyoruz(Fazla olani id gibi)
 public class JsonPlaceHolderPojo {
