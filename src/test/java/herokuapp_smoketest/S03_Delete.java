@@ -7,7 +7,6 @@ import org.junit.Test;
 import static herokuapp_smoketest.S01_Post.bookingId;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
-import static util.AuthenticationHerOkuApp.generateToken;
 
 public class S03_Delete extends HerOkuAppBaseUrl {
 
