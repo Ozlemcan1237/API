@@ -27,6 +27,12 @@ public class GetCanOdev3 extends GoRestBaseUrl {
         "title": "Triumphus usus tantillus abscido usque et facilis.",
         "body": "Vultuosus delectatio vergo. Vomito demo appono. Nam dolorum coerceo. Ut ullam appono. Culpo adstringo deduco. Degusto conscendo crepusculum. Crinis canto nulla. Arbitro quia condico. Mollitia ut temperantia. Cuppedia stultus volubilis. Ante totus arto. Toties tener pecunia. Tristis commodo sub. Apto calamitas amaritudo. Aduro curo consuasor. Callide pecco venia. Delego tergeo adsuesco. Tabula aestus decerno. Virtus adflicto deripio."
     },
+    {
+    "id": 174,
+    "user_id": 612,
+    "title": "Tertius valeo sint est vesica doloribus rerum casus cetera nisi sapiente vigor pecus voluptas asperiores et sto vapulus.",
+    "body": "Et demens tergo. Cohors copia adeptio. Cotidie speciosus coaegresco. Concido crastinus degero. Tristis fugit supellex. Sustineo cogo odit. Pel patria crur. Amplus comitatus modi. Ater omnis solutio. Voluptatem acies unde. Taceo delinquo ustilo. Alo possimus vaco. Sit cognomen thesaurus. Appositus vel amicitia. Cetera textus defungo."
+}
      */
 
     @Test
@@ -50,9 +56,9 @@ public class GetCanOdev3 extends GoRestBaseUrl {
         System.out.println("actualData = " + actualData);
 
         assertEquals(200, response.statusCode());
-        assertEquals(expectedData.get("user_id"), actualData.get("data.user_id"));
-        assertEquals(expectedData.get("title"), actualData.get("data.title"));
-        assertEquals(expectedData.get("body"), actualData.get("data.body"));
+        assertEquals(expectedData.get("user_id"), ((Map)actualData.get("data")).get("user_id"));
+        assertEquals(expectedData.get("title"),((Map)actualData.get("data")).get("title"));
+        assertEquals(expectedData.get("body"), ((Map)actualData.get("data")).get("body"));
 
     }
 }
