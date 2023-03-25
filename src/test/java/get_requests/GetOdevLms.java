@@ -13,7 +13,6 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class GetOdevLms extends AutomationExerciseBaseUrl {
 
@@ -38,6 +37,7 @@ public class GetOdevLms extends AutomationExerciseBaseUrl {
         JsonPath jsonPath = response.jsonPath();
 
         int usertypeWomenSayisi = jsonPath.getList("products.findAll{it.category.usertype.usertype=='Women'}").size();
+        System.out.println("usertypeWomenSayisi = " + usertypeWomenSayisi);
         assertEquals(12,usertypeWomenSayisi);
     }
 }
