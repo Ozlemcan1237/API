@@ -2,53 +2,49 @@ package gmibank;
 
 import base_urls.GmiBankBaseUrl;
 import gmibank.pojos.Account;
-import gmibank.pojos.Country;
 import gmibank.pojos.Customer;
 import gmibank.pojos.User;
 import io.restassured.response.Response;
 import org.junit.Test;
+import util.ObjectMapperUtils;
 
 import java.util.ArrayList;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class GetCustomer extends GmiBankBaseUrl {
-
-     /*
+       /*
     Given
-        https://www.gmibank.com/api/tp-customers/110472
+        https://www.gmibank.com/api/tp-customers/133986
     When
         User sends Get request
     Then
         Status code should be 200
      And
         Response body should be like:
-    {
-    "id": 110472,
-    "firstName": "Melva",
-    "lastName": "Bernhard",
-    "middleInitial": "A",
-    "email": "chas.kuhlman@yahoo.com",
-    "mobilePhoneNumber": "192-580-3408",
-    "phoneNumber": "192-580-3408",
-    "zipCode": "40207",
-    "address": "Apt. 634 579 Eliseo Rapids, Deanaside, AZ 53872",
-    "city": "New Jordanhaven",
-    "ssn": "523-50-1191",
-    "createDate": "2021-11-30T21:00:00Z",
+{
+    "id": 133986,
+    "firstName": "Danika",
+    "lastName": "Huel",
+    "middleInitial": "S",
+    "email": "danikahuel@gmail.com",
+    "mobilePhoneNumber": "155-489-7844",
+    "phoneNumber": "155-489-7844",
+    "zipCode": "32476",
+    "address": "3848 Lang Hill",
+    "city": "Hsajkhfja",
+    "ssn": "725-97-6213",
+    "createDate": "2022-01-21T05:00:00Z",
     "zelleEnrolled": false,
-    "country": {
-        "id": 24105,
-        "name": "San Jose",
-        "states": null
-    },
+    "country": null,
     "state": "",
     "user": {
-        "id": 111206,
-        "login": "delilah.metz",
-        "firstName": "Melva",
-        "lastName": "Bernhard",
-        "email": "chas.kuhlman@yahoo.com",
+        "id": 134701,
+        "login": "raymundo.moen",
+        "firstName": "Danika",
+        "lastName": "Huel",
+        "email": "danikahuel@gmail.com",
         "activated": true,
         "langKey": "en",
         "imageUrl": null,
@@ -56,24 +52,24 @@ public class GetCustomer extends GmiBankBaseUrl {
     },
     "accounts": [
         {
-            "id": 2327,
-            "description": "omermusteri01 hesap1",
-            "balance": 1020600,
-            "accountType": "SAVING",
+            "id": 128481,
+            "description": "Description",
+            "balance": 0,
+            "accountType": "CHECKING",
             "accountStatusType": "ACTIVE",
-            "createDate": "2020-11-06T23:00:00Z",
-            "closedDate": "2024-11-07T23:00:00Z",
+            "createDate": "2022-01-04T21:00:00Z",
+            "closedDate": "2022-01-04T21:00:00Z",
             "employee": null,
             "accountlogs": null
         },
         {
-            "id": 107250,
-            "description": "New Account_6thGenQA_01",
-            "balance": 11190,
-            "accountType": "CHECKING",
+            "id": 131776,
+            "description": "mfy",
+            "balance": 536846,
+            "accountType": "CREDIT_CARD",
             "accountStatusType": "ACTIVE",
-            "createDate": "2021-11-24T23:00:00Z",
-            "closedDate": "2022-11-24T23:00:00Z",
+            "createDate": "2022-01-18T21:00:00Z",
+            "closedDate": "2022-01-18T21:00:00Z",
             "employee": null,
             "accountlogs": null
         }
@@ -83,25 +79,85 @@ public class GetCustomer extends GmiBankBaseUrl {
 
     @Test
     public void gmiBankCustomer() {
-        spec.pathParams("first", "api", "second", "tp-customers", "third", 110472);
 
-        Country country = new Country(24105, "San Jose", null);
+//        i)   Set the URL
+        spec.pathParams("first", "api", "second", "tp-customers", "third", 133986);
 
-        User user = new User(111206, "delilah.metz", "Melva", "Bernhard", "chas.kuhlman@yahoo.com", true, "en", null, null);
+//        ii)  Set the expected data
+        //Country country = new Country(133986, "Turkey", null);
+        User user = new User(134701, "raymundo.moen", "Danika", "Huel", "danikahuel@gmail.com", true, "en", null, null);
 
-        Account account1 = new Account(2327, "omermusteri01 hesap1", 1020600, "SAVING", "ACTIVE", "2020-11-06T23:00:00Z", "2024-11-07T23:00:00Z", null, null);
-
-        Account account2 = new Account(107250, "New Account_6thGenQA_01", 11190, "CHECKING", "ACTIVE", "2021-11-24T23:00:00Z", "2022-11-24T23:00:00Z", null, null);
+        Account account1 = new Account(128481, "Description", 0, "CHECKING", "ACTIVE", "2022-01-04T21:00:00Z", "2022-01-04T21:00:00Z", null, null);
+        Account account2 = new Account(131776, "mfy", 536846, "CREDIT_CARD", "ACTIVE", "2022-01-18T21:00:00Z", "2022-01-18T21:00:00Z", null, null);
 
         ArrayList<Account> accountList = new ArrayList<>();
         accountList.add(account1);
         accountList.add(account2);
 
-        Customer expectedData = new Customer(110472, "Melva", "Bernhard", "A", "chas.kuhlman@yahoo.com", "192-580-3408", "192-580-3408", "40207",
-                "Apt. 634 579 Eliseo Rapids, Deanaside, AZ 53872", "New Jordanhaven", "523-50-1191", "2021-11-30T21:00:00Z", false, country, "", user, accountList);
+        Customer expectedData = new Customer(133986, "Danika", "Huel", "S", "danikahuel@gmail.com", "155-489-7844", "155-489-7844", "32476", "3848 Lang Hill", "Hsajkhfja", "725-97-6213", "2022-01-21T05:00:00Z", false, null, "", user, accountList);
         System.out.println("expectedData = " + expectedData);
 
-        Response response = given().spec(spec).headers("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYXRjaF95dXp1YyIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc5ODU3MzcyfQ.iUh_MF0w19tnARXNrPmMgy58bpLm2k6x-AxK8O_vGYqazZ4sHpyEIIoHhLU4VX7vM8nt3GtF-BVZWctOPYbtSg").get("/{first}/{second}/{third}");
+//        iii) Send the request and get the response
+        Response response = given(spec).get("/{first}/{second}/{third}");
         response.prettyPrint();
+
+//        iv)  Do assertion
+        Customer actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), Customer.class);
+        System.out.println("actualData = " + actualData);
+
+        assertEquals(200,response.statusCode());
+        assertEquals(expectedData.getFirstName(),actualData.getFirstName());
+        assertEquals(expectedData.getLastName(),actualData.getLastName());
+        assertEquals(expectedData.getMiddleInitial(),actualData.getMiddleInitial());
+        assertEquals(expectedData.getEmail(),actualData.getEmail());
+        assertEquals(expectedData.getMobilePhoneNumber(),actualData.getMobilePhoneNumber());
+        assertEquals(expectedData.getPhoneNumber(),actualData.getPhoneNumber());
+        assertEquals(expectedData.getZipCode(),actualData.getZipCode());
+        assertEquals(expectedData.getAddress(),actualData.getAddress());
+        assertEquals(expectedData.getCity(),actualData.getCity());
+        assertEquals(expectedData.getSsn(),actualData.getSsn());
+        assertEquals(expectedData.getCreateDate(),actualData.getCreateDate());
+        assertEquals(expectedData.isZelleEnrolled(),actualData.isZelleEnrolled());
+        assertEquals(expectedData.getCountry(),actualData.getCountry());
+        assertEquals(expectedData.getState(),actualData.getState());
+        //ODEV
+
+        assertEquals(user.getId(),actualData.getUser().getId());
+        assertEquals(user.getLogin(),actualData.getUser().getLogin());
+        assertEquals(user.getFirstName(),actualData.getUser().getFirstName());
+        assertEquals(user.getLastName(),actualData.getUser().getLastName());
+        assertEquals(user.getEmail(),actualData.getUser().getEmail());
+        assertEquals(user.isActivated(),actualData.getUser().isActivated());
+        assertEquals(user.getLangKey(),actualData.getUser().getLangKey());
+        assertEquals(user.getImageUrl(),actualData.getUser().getImageUrl());
+        assertEquals(user.getResetDate(),actualData.getUser().getResetDate());
+        
+        //ODEV
+
+        assertEquals(account1.getId(),actualData.getAccounts().get(0).getId());
+        assertEquals(account1.getDescription(),actualData.getAccounts().get(0).getDescription());
+        assertEquals(account1.getBalance(),actualData.getAccounts().get(0).getBalance());
+
+        //ODEV
+
+        assertEquals(account2.getId(),actualData.getAccounts().get(1).getId());
+        assertEquals(account2.getDescription(),actualData.getAccounts().get(1).getDescription());
+        assertEquals(account2.getBalance(),actualData.getAccounts().get(1).getBalance());
+        //ODEV
+
+
     }
+
 }
+/*
+
+            "id": 131776,
+            "description": "mfy",
+            "balance": 536846,
+            "accountType": "CREDIT_CARD",
+            "accountStatusType": "ACTIVE",
+            "createDate": "2022-01-18T21:00:00Z",
+            "closedDate": "2022-01-18T21:00:00Z",
+            "employee": null,
+            "accountlogs": null
+ */
