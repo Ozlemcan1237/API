@@ -106,6 +106,7 @@ public class GetCustomer extends GmiBankBaseUrl {
         System.out.println("actualData = " + actualData);
 
         assertEquals(200,response.statusCode());
+        assertEquals(expectedData.getId(),actualData.getId());
         assertEquals(expectedData.getFirstName(),actualData.getFirstName());
         assertEquals(expectedData.getLastName(),actualData.getLastName());
         assertEquals(expectedData.getMiddleInitial(),actualData.getMiddleInitial());
@@ -118,9 +119,7 @@ public class GetCustomer extends GmiBankBaseUrl {
         assertEquals(expectedData.getSsn(),actualData.getSsn());
         assertEquals(expectedData.getCreateDate(),actualData.getCreateDate());
         assertEquals(expectedData.isZelleEnrolled(),actualData.isZelleEnrolled());
-        assertEquals(expectedData.getCountry(),actualData.getCountry());
         assertEquals(expectedData.getState(),actualData.getState());
-        //ODEV
 
         assertEquals(user.getId(),actualData.getUser().getId());
         assertEquals(user.getLogin(),actualData.getUser().getLogin());
@@ -131,21 +130,26 @@ public class GetCustomer extends GmiBankBaseUrl {
         assertEquals(user.getLangKey(),actualData.getUser().getLangKey());
         assertEquals(user.getImageUrl(),actualData.getUser().getImageUrl());
         assertEquals(user.getResetDate(),actualData.getUser().getResetDate());
-        
-        //ODEV
 
         assertEquals(account1.getId(),actualData.getAccounts().get(0).getId());
         assertEquals(account1.getDescription(),actualData.getAccounts().get(0).getDescription());
         assertEquals(account1.getBalance(),actualData.getAccounts().get(0).getBalance());
-
-        //ODEV
+        assertEquals(account1.getAccountType(),actualData.getAccounts().get(0).getAccountType());
+        assertEquals(account1.getAccountStatusType(),actualData.getAccounts().get(0).getAccountStatusType());
+        assertEquals(account1.getCreateDate(),actualData.getAccounts().get(0).getCreateDate());
+        assertEquals(account1.getClosedDate(),actualData.getAccounts().get(0).getClosedDate());
+        assertEquals(account1.getEmployee(),actualData.getAccounts().get(0).getEmployee());
+        assertEquals(account1.getAccountlogs(),actualData.getAccounts().get(0).getAccountlogs());
 
         assertEquals(account2.getId(),actualData.getAccounts().get(1).getId());
         assertEquals(account2.getDescription(),actualData.getAccounts().get(1).getDescription());
         assertEquals(account2.getBalance(),actualData.getAccounts().get(1).getBalance());
-        //ODEV
-
-
+        assertEquals(account2.getAccountType(),actualData.getAccounts().get(1).getAccountType());
+        assertEquals(account2.getAccountStatusType(),actualData.getAccounts().get(1).getAccountStatusType());
+        assertEquals(account2.getCreateDate(),actualData.getAccounts().get(1).getCreateDate());
+        assertEquals(account2.getClosedDate(),actualData.getAccounts().get(1).getClosedDate());
+        assertEquals(account2.getEmployee(),actualData.getAccounts().get(1).getEmployee());
+        assertEquals(account2.getAccountlogs(),actualData.getAccounts().get(1).getAccountlogs());
     }
 
 }

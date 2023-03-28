@@ -15,7 +15,7 @@ public class DummyRestApiBaseUrl {
 
         spec = new RequestSpecBuilder().
                 setContentType(ContentType.JSON).
-                setBaseUri("https://dummy.restapiexample.com/api/v1").
+                setBaseUri("https://dummy.restapiexample.com/").
                 build();
     }
 }
