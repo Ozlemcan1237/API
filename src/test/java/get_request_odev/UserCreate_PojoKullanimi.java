@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class UserCreate extends SwaggerBaseUrl {
+public class UserCreate_PojoKullanimi extends SwaggerBaseUrl {
     /*
    "https://petstore.swagger.io/" dökümanını kullanarak 'user' oluşturacak bir otomasyon testi yazınız
     Not: Test Case'i gherkin language ile yazınız.

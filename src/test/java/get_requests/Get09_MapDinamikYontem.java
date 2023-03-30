@@ -11,7 +11,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class Get09 extends HerOkuAppBaseUrl {
+public class Get09_MapDinamikYontem extends HerOkuAppBaseUrl {
 /*
       Given
           https://restful-booker.herokuapp.com/booking/2279

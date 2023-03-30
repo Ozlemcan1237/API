@@ -7,7 +7,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class Get03 {
+public class Get03_HamcrestMacher {
 /*
         Given
             https://jsonplaceholder.typicode.com/todos/23

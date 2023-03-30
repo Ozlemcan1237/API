@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-public class Get06 extends HerOkuAppBaseUrl {
+public class Get06_JsonpathIleDogrulama extends HerOkuAppBaseUrl {
     /*
         Given
             https://restful-booker.herokuapp.com/booking/2325

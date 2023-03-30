@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class Get07 extends JsonPlaceHolderBaseUrl {
+public class Get07_JsonpathListGroovy extends JsonPlaceHolderBaseUrl {
     /*
         Given
               https://jsonplaceholder.typicode.com/todos

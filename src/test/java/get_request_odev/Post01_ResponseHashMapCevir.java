@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class Post01 extends RegresBaseUrl {
+public class Post01_ResponseHashMapCevir extends RegresBaseUrl {
 
   /*
         Given

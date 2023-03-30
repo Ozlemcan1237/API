@@ -12,7 +12,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class Put01 extends JsonPlaceHolderBaseUrl {
+public class Put01_ObjeMapDinamikYontem extends JsonPlaceHolderBaseUrl {
     /*
         Given
 	        1) https://jsonplaceholder.typicode.com/todos/198

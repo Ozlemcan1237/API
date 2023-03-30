@@ -14,7 +14,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class GetCanOdev extends ZippopotamBaseUrl {
+public class GetCanOdev_PojoMapKullanimi extends ZippopotamBaseUrl {
     /*
         Given
             http://api.zippopotam.us/ES/01001

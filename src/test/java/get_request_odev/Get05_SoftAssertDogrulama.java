@@ -9,7 +9,7 @@ import org.testng.asserts.SoftAssert;
 
 import static io.restassured.RestAssured.given;
 
-public class Get05 extends RegresBaseUrl {
+public class Get05_SoftAssertDogrulama extends RegresBaseUrl {
       /*
     Given
     https://reqres.in/api/unknown/3

@@ -1,7 +1,6 @@
 package post_request;
 
 import base_urls.HerOkuAppBaseUrl;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 import test_data.HerOkuAppTestData;
@@ -12,7 +11,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class Post02 extends HerOkuAppBaseUrl {
+public class Post02_ObjeMap extends HerOkuAppBaseUrl {
     /*
         Given
             1) https://restful-booker.herokuapp.com/booking

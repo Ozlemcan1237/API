@@ -10,7 +10,7 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class Get06 extends RegresBaseUrl {
+public class Get06_ListGroovyKullanimi extends RegresBaseUrl {
     /*
        Given
               https://reqres.in/api/unknown/

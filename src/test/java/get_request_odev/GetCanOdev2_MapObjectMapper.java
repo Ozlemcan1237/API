@@ -11,7 +11,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class GetCanOdev2 extends Covid19BaseUrl {
+public class GetCanOdev2_MapObjectMapper extends Covid19BaseUrl {
     /*
         Given
            https://api.covid19api.com/world/total

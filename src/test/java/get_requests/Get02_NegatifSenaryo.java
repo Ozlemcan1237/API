@@ -5,9 +5,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.junit.Assert.*;
 
-public class Get02 {
+public class Get02_NegatifSenaryo {
 /*
         Given
             https://restful-booker.herokuapp.com/booking/0

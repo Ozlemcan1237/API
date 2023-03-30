@@ -14,7 +14,9 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LmsOdev27 extends DummyRestApiBaseUrl {
 
@@ -78,6 +80,7 @@ public class LmsOdev27 extends DummyRestApiBaseUrl {
 
         assertEquals(200, response.statusCode());
 
+//        There are 24 employees
         JsonPath jsonPath = response.jsonPath();
 
         List<Integer> ids = response.jsonPath().getList("data.id");
@@ -88,23 +91,37 @@ public class LmsOdev27 extends DummyRestApiBaseUrl {
         }
         System.out.println("idSayisi = " + idSayisi);
 
-//        response.then()
-//                .contentType(ContentType.JSON)
-//                .body("data.employee_name",equalTo("Tiger Nixon"));
-//
-//        response.then()
-//                .contentType(ContentType.JSON)
-//                .body("data.employee_name",equalTo("Garrett Winters"));
+//        Assertion 1
+        List<String> names = response.jsonPath().getList("data.employee_name");
+        System.out.println("names = " + names);
+        assertTrue(names.contains("Tiger Nixon"));
+        assertTrue(names.contains("Garrett Winters"));
 
+//        Assertion 2
+        response.then()
+                .contentType(ContentType.JSON)
+                .body("data.employee_name",hasItem("Tiger Nixon"));
+
+        response.then()
+                .contentType(ContentType.JSON)
+                .body("data.employee_name",hasItem("Garrett Winters"));
+
+//        The greatest age is 66
+        List<Integer> ages = response.jsonPath().getList("data.findAll{it.employee_age>65}.employee_age");
+        System.out.println("ages = " + ages);
+
+//        The name of the lowest age is "Tatyana Fitzpatrick"
+        List<Integer> enKucukYas = response.jsonPath().getList("data.findAll{it.employee_age<20}.employee_age");
+        System.out.println("enKucukYas = " + enKucukYas);
+
+//        Total salary of all employees is 6,644,770
+        List<Integer> salary = response.jsonPath().getList("data.employee_salary");
+        System.out.println("salary = " + salary);
+
+        int toplam=0;
+        for (Integer w:salary){
+            toplam+=w;
+        }
+        System.out.println(toplam);
     }
 }
-/*
- response.
-                then().
-                statusCode(200).
-                contentType("application/json").
-                body("title",equalTo("et itaque necessitatibus maxime molestiae qui quas velit")).
-                body("completed",equalTo(false)).
-                body("userId",equalTo(2));
-
- */
